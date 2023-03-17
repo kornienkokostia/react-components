@@ -14,7 +14,7 @@ interface RatingProps {
 const capitilizeFirstLetter = (str: string) =>
   str.charAt(0).toUpperCase() + str.slice(1);
 
-const setGoodsItemName = (item: IProduct) => `${capitilizeFirstLetter(
+export const setGoodsItemName = (item: IProduct) => `${capitilizeFirstLetter(
   item.brand,
 )} 
   ${item.name} 
@@ -32,7 +32,7 @@ const setGoodsItemName = (item: IProduct) => `${capitilizeFirstLetter(
   } 
   ${item.model}`;
 
-const Rating = (props: RatingProps) => {
+export const Rating = (props: RatingProps) => {
   const stars = [];
   for (let i = 0; i < 5; i++) {
     if (i < props.rating) {
@@ -74,7 +74,7 @@ export default class Product extends Component<Props> {
 
   render() {
     return (
-      <div className="product">
+      <div className="product" data-testid="product">
         <img
           src={this.currProduct.imgs[0]}
           alt="product"
