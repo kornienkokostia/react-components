@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "prettierrc.js"],
+  "include": ["src", ".prettierrc.cjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
