@@ -86,9 +86,9 @@ export default class Product extends Component<Props> {
           </div>
           <div className="product-info-stock">{`Stock: ${this.currProduct.stock}`}</div>
           <Rating rating={this.currProduct.rating} />
-          <div className='product-info-price-buy'>
-            <div className='product-info-price'>{`$${this.currProduct.price}`}</div>
-            <button className='product-info-buy'>Buy</button>
+          <div className="product-info-price-buy">
+            <div className="product-info-price">{`$${this.currProduct.price}`}</div>
+            <button className="product-info-buy">Buy</button>
           </div>
         </div>
       </div>
