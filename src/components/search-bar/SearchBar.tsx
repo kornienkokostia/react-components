@@ -9,10 +9,12 @@ export default class SearchBar extends Component<object, SearchState> {
   constructor(props: object) {
     super(props);
     this.state = {
-      input: localStorage.getItem('input')
-        ? (localStorage.getItem('input') as string)
-        : '',
+      input: localStorage.getItem('input') || ''
     };
+  }
+
+  componentWillUnmount(): void {
+    localStorage.setItem('input', this.state.input);
   }
 
   render() {
