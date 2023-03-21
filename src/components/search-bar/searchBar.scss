@@ -4,24 +4,25 @@
   max-width: 540px;
   width: calc(100% - 40px);
   column-gap: 7px;
-  background-color: #e2e2e5;
-  border-radius: 12px;
+  background-color: #e2e2e5d2;
+  border-radius: 10px;
   margin-top: 15px;
   &-input {
     width: 100%;
     appearance: none;
     border: none;
     outline: none;
-    padding: 10px 8px 10px 0;
-    border-radius: 12px;
+    padding: 7px 7px 7px 0;
     font-family: 'SF UI Text', sans-serif;
     background-color: transparent;
-    font-size: 16px;
+    font-size: 18px;
     &::placeholder {
       color: rgba(0, 0, 0, 0.54);
     }
   }
   &-icon {
-    padding-left: 10px;
+    min-width: 18px;
+    height: 18px;
+    margin-left: 8px;
   }
 }
