@@ -14,11 +14,30 @@
     text-decoration: none;
     color: #000000;
     font-size: 18px;
-    &:hover {
-      text-decoration: underline;
+    &:hover::after {
+      width: 100%;
+      margin-left: 0;
+    }
+    &:not(:hover)::after {
+      width: 0px;
+      margin-left: 50%;
+    }
+    &::after {
+      content: '';
+      width: 0px;
+      height: 1px;
+      display: block;
+      background: black;
+      border-radius: 1px;
+      transition: 0.3s;
+      margin-left: 50%;
+    }
+    &.active::after {
+      width: 100%;
+      margin-left: 0;
     }
   }
-  &-current-page{
-    font-size: 20px;
+  &-current-page {
+    font-size: 18px;
   }
 }
