@@ -27,8 +27,7 @@ const productDB: IProduct[] = [
     ppi: '458ppi',
     refreshRate: '120Hz',
     communication: 'GPS; Wi-Fi; Bluetooth; Lightning',
-    features:
-      'wireless charging; face ID; quick charge; LiDAR, emergency SOS via satellite',
+    features: 'wireless charging; face ID; quick charge; LiDAR, emergency SOS via satellite',
     batteryType: 'Li-Ion',
     sdCardSupport: 'no',
     internet: '3G; 5G; 4G (LTE)',
@@ -72,8 +71,7 @@ const productDB: IProduct[] = [
     ppi: '458ppi',
     refreshRate: '120Hz',
     communication: 'GPS; Wi-Fi; Bluetooth; Lightning',
-    features:
-      'wireless charging; face ID; quick charge; LiDAR, emergency SOS via satellite',
+    features: 'wireless charging; face ID; quick charge; LiDAR, emergency SOS via satellite',
     batteryType: 'Li-Ion',
     sdCardSupport: 'no',
     internet: '3G; 5G; 4G (LTE)',
@@ -117,8 +115,7 @@ const productDB: IProduct[] = [
     ppi: '460ppi',
     refreshRate: '120Hz',
     communication: 'GPS; Wi-Fi; Bluetooth; Lightning',
-    features:
-      'wireless charging; face ID; quick charge; LiDAR, emergency SOS via satellite',
+    features: 'wireless charging; face ID; quick charge; LiDAR, emergency SOS via satellite',
     batteryType: 'Li-Ion',
     sdCardSupport: 'no',
     internet: '3G; 5G; 4G (LTE)',
@@ -162,8 +159,7 @@ const productDB: IProduct[] = [
     ppi: '460ppi',
     refreshRate: '120Hz',
     communication: 'GPS; Wi-Fi; Bluetooth; Lightning',
-    features:
-      'wireless charging; face ID; quick charge; LiDAR, emergency SOS via satellite',
+    features: 'wireless charging; face ID; quick charge; LiDAR, emergency SOS via satellite',
     batteryType: 'Li-Ion',
     sdCardSupport: 'no',
     internet: '3G; 5G; 4G (LTE)',
@@ -308,8 +304,7 @@ const productDB: IProduct[] = [
     training: 'cycling, running, swimming',
     bodyShape: 'rectangle',
     control: 'buttons, touch screen',
-    sensors:
-      'accelerometer, gyro, heart rate, barometer, always-on altimeter, compass, SpO2',
+    sensors: 'accelerometer, gyro, heart rate, barometer, always-on altimeter, compass, SpO2',
     communication: 'GPS; Wi-Fi; Bluetooth',
     nfc: 'yes',
     protection: 'IP6X',
@@ -395,8 +390,7 @@ const productDB: IProduct[] = [
     ppi: '458ppi',
     refreshRate: '120Hz',
     communication: 'GPS; Wi-Fi; Bluetooth; Lightning',
-    features:
-      'wireless charging; face ID; quick charge; emergency SOS via satellite',
+    features: 'wireless charging; face ID; quick charge; emergency SOS via satellite',
     batteryType: 'Li-Ion',
     sdCardSupport: 'no',
     internet: '3G; 5G; 4G (LTE)',
@@ -440,8 +434,7 @@ const productDB: IProduct[] = [
     ppi: '458ppi',
     refreshRate: '120Hz',
     communication: 'GPS; Wi-Fi; Bluetooth; Lightning',
-    features:
-      'wireless charging; face ID; quick charge; emergency SOS via satellite',
+    features: 'wireless charging; face ID; quick charge; emergency SOS via satellite',
     batteryType: 'Li-Ion',
     sdCardSupport: 'no',
     internet: '3G; 5G; 4G (LTE)',
@@ -485,8 +478,7 @@ const productDB: IProduct[] = [
     ppi: '460ppi',
     refreshRate: '60Hz',
     communication: 'GPS; Lightning; NFC; Wi-Fi; Bluetooth',
-    features:
-      'wireless charging; face ID; quick charge; emergency SOS via satellite',
+    features: 'wireless charging; face ID; quick charge; emergency SOS via satellite',
     batteryType: 'Li-Ion',
     sdCardSupport: 'no',
     internet: '3G; 5G; 4G (LTE)',
@@ -530,8 +522,7 @@ const productDB: IProduct[] = [
     ppi: '460ppi',
     refreshRate: '60Hz',
     communication: 'GPS; Lightning; NFC; Wi-Fi; Bluetooth',
-    features:
-      'wireless charging; face ID; quick charge; emergency SOS via satellite',
+    features: 'wireless charging; face ID; quick charge; emergency SOS via satellite',
     batteryType: 'Li-Ion',
     sdCardSupport: 'no',
     internet: '3G; 5G; 4G (LTE)',
@@ -575,8 +566,7 @@ const productDB: IProduct[] = [
     ppi: '460ppi',
     refreshRate: '60Hz',
     communication: 'GPS; Lightning; NFC; Wi-Fi; Bluetooth',
-    features:
-      'wireless charging; face ID; quick charge; emergency SOS via satellite',
+    features: 'wireless charging; face ID; quick charge; emergency SOS via satellite',
     batteryType: 'Li-Ion',
     sdCardSupport: 'no',
     internet: '3G; 5G; 4G (LTE)',
@@ -792,8 +782,7 @@ const productDB: IProduct[] = [
     training: 'cycling, running, swimming',
     bodyShape: 'rectangle',
     control: 'buttons, touch screen',
-    sensors:
-      'accelerometer, gyro, heart rate, barometer, always-on altimeter, compass, SpO2',
+    sensors: 'accelerometer, gyro, heart rate, barometer, always-on altimeter, compass, SpO2',
     communication: 'GPS; Wi-Fi; Bluetooth',
     nfc: 'yes',
     protection: 'IP6X',
@@ -831,8 +820,7 @@ const productDB: IProduct[] = [
     training: 'cycling, running, swimming',
     bodyShape: 'rectangle',
     control: 'buttons, touch screen',
-    sensors:
-      'accelerometer, gyro, heart rate, barometer, always-on altimeter, compass, SpO2',
+    sensors: 'accelerometer, gyro, heart rate, barometer, always-on altimeter, compass, SpO2',
     communication: 'GPS; Wi-Fi; Bluetooth',
     nfc: 'yes',
     protection: 'IP6X',
@@ -870,8 +858,7 @@ const productDB: IProduct[] = [
     training: 'cycling, running, swimming',
     bodyShape: 'rectangle',
     control: 'buttons, touch screen',
-    sensors:
-      'accelerometer, gyro, heart rate, barometer, always-on altimeter, compass, SpO2',
+    sensors: 'accelerometer, gyro, heart rate, barometer, always-on altimeter, compass, SpO2',
     communication: 'GPS; Wi-Fi; Bluetooth',
     nfc: 'yes',
     protection: 'IP6X',
@@ -909,8 +896,7 @@ const productDB: IProduct[] = [
     training: 'cycling, running, swimming',
     bodyShape: 'rectangle',
     control: 'buttons, touch screen',
-    sensors:
-      'accelerometer, gyro, heart rate, barometer, always-on altimeter, compass, SpO2',
+    sensors: 'accelerometer, gyro, heart rate, barometer, always-on altimeter, compass, SpO2',
     communication: 'GPS; Wi-Fi; Bluetooth',
     nfc: 'yes',
     protection: 'IP6X',
@@ -1054,7 +1040,7 @@ const productDB: IProduct[] = [
     material: 'aluminum',
     size: '280.6 x 214.9 x 6.4mm',
     weight: '685g',
-  }
+  },
 ];
 
 export default productDB;
