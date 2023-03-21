@@ -69,10 +69,14 @@ class Header extends React.Component<HeaderProps, PageState > {
     return (
       <div className="header-container">
         <div className="header">
-          <Link to={'/'} className="header-item" onClick={(e) => this.handleLinkClick(e)}>
+          <Link to={'/'} 
+            className={`header-item ${this.state.currentPage === 'Home' ? 'active' : ''}`} 
+            onClick={(e) => this.handleLinkClick(e)}>
             Home
           </Link>
-          <Link to={'/about'} className="header-item" onClick={(e) => this.handleLinkClick(e)}>
+          <Link to={'/about'} 
+            className={`header-item ${this.state.currentPage === 'About' ? 'active' : ''}`}  
+            onClick={(e) => this.handleLinkClick(e)}>
             About
           </Link>
         </div>

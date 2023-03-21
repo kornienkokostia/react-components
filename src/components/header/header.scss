@@ -17,8 +17,11 @@
     &:hover {
       text-decoration: underline;
     }
+    &.active{
+      text-decoration: underline;
+    }
   }
   &-current-page{
-    font-size: 20px;
+    font-size: 18px;
   }
 }
