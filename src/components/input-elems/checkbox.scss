@@ -1,0 +1,25 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin-top: 14px;
+  &-input {
+    appearance: none;
+    width: 15.33px;
+    height: 15.33px;
+    border: 1px solid #d2d2d7;
+    border-radius: 3px;
+    cursor: pointer;
+    &:checked {
+      border-color: #0071e3;
+      background-color: #0071e3;
+      background-image: url(../../assets/checkbox-checked.svg);
+      background-position: 2px 3.5px;
+      background-size: 9px;
+      background-repeat: no-repeat;
+    }
+  }
+  &-text {
+    user-select: none;
+  }
+}

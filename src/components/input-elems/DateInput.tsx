@@ -1,4 +1,5 @@
 import React, { Component, RefObject } from 'react';
+import './input.scss';
 
 interface PassedProps {
   childRef: RefObject<HTMLInputElement>;
@@ -10,21 +11,23 @@ export default class DateInput extends Component<PassedProps> {
     super(props);
   }
 
+  dateToday = (): string => {
+    const curr = new Date();
+    curr.setDate(curr.getDate());
+    const date = curr.toISOString().substring(0, 10);
+    return date;
+  };
+
   render() {
     return (
       <div className="input-field date-input">
-        <input type="date" className="input-field-input" ref={this.props.childRef} />
+        <input
+          type="date"
+          className="input-field-input"
+          ref={this.props.childRef}
+          defaultValue={this.dateToday()}
+        />
         <span className={`input-field-title active`}>{this.props.fieldName}</span>
-        <div className="input-field-error">
-          <img
-            className="input-field-error-img"
-            src="https://kornienkokostia.github.io/online-store/assets/images/icons/error.svg"
-            alt="error"
-          ></img>
-          <span className="input-field-error-msg">
-            Please enter a valid first name (&gt;2 characters).
-          </span>
-        </div>
       </div>
     );
   }

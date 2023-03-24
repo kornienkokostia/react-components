@@ -1,0 +1,58 @@
+.form-card {
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  padding: 15px;
+  width: 100%;
+  &-header {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    margin-bottom: 15px;
+  }
+  &-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-size: contain;
+  }
+  &-name {
+    font-weight: 600;
+    width: 20vw;
+    max-width: 255px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &-email {
+    width: 20vw;
+    max-width: 255px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &-title {
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 1070px) {
+  .form-card-name {
+    width: calc(50vw - 147px);
+    max-width: 385px;
+  }
+  .form-card-email {
+    width: calc(50vw - 147px);
+    max-width: 385px;
+  }
+}
+
+@media (max-width: 720px) {
+  .form-card-name {
+    width: calc(100vw - 160px);
+    max-width: 563px;
+  }
+  .form-card-email {
+    width: calc(100vw - 160px);
+    max-width: 563px;
+  }
+}

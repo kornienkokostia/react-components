@@ -31,11 +31,11 @@ export const Rating = (props: RatingProps) => {
   for (let i = 0; i < 5; i++) {
     if (i < props.rating) {
       stars.push(
-        <img src={FilledStar} className="product-info-rating-star" alt="filled-star"></img>
+        <img src={FilledStar} className="product-info-rating-star" alt="filled-star" key={i}></img>
       );
     } else {
       stars.push(
-        <img src={EmptyStar} className="product-info-rating-star" alt="filled-star"></img>
+        <img src={EmptyStar} className="product-info-rating-star" alt="filled-star" key={i}></img>
       );
     }
   }

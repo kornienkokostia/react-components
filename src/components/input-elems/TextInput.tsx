@@ -1,12 +1,17 @@
 import React, { Component, RefObject } from 'react';
-import './textInput.scss';
+import './input.scss';
 
 interface PassedProps {
   childRef: RefObject<HTMLInputElement>;
   fieldName: string;
+  typeName: 'text' | 'email' | 'number';
+  validation: boolean;
+  changeValidation: () => void;
+  errorMsg: string;
 }
 interface InputProps {
   inputFocused: boolean;
+  valid: boolean;
 }
 
 export default class TextInput extends Component<PassedProps, InputProps> {
@@ -14,6 +19,7 @@ export default class TextInput extends Component<PassedProps, InputProps> {
     super(props);
     this.state = {
       inputFocused: false,
+      valid: props.validation,
     };
   }
 
@@ -27,26 +33,33 @@ export default class TextInput extends Component<PassedProps, InputProps> {
     return (
       <div className="input-field text-input">
         <input
-          type="text"
-          className="input-field-input"
+          type={this.props.typeName}
+          className={`input-field-input ${!this.props.validation ? 'error' : ''}`}
           ref={this.props.childRef}
           onFocus={this.handleFocus}
           onBlur={this.handleFocus}
-          onInput={() => this.setState({ inputFocused: true })}
+          onInput={() => {
+            this.setState({ inputFocused: true });
+            return this.props.changeValidation();
+          }}
         />
-        <span className={`input-field-title ${this.state.inputFocused ? 'active' : ''}`}>
+        <span
+          className={`input-field-title ${this.state.inputFocused ? 'active' : ''} ${
+            !this.props.validation ? 'error' : ''
+          }`}
+        >
           {this.props.fieldName}
         </span>
-        <div className="input-field-error">
-          <img
-            className="input-field-error-img"
-            src="https://kornienkokostia.github.io/online-store/assets/images/icons/error.svg"
-            alt="error"
-          ></img>
-          <span className="input-field-error-msg">
-            Please enter a valid first name (&gt;2 characters).
-          </span>
-        </div>
+        {!this.props.validation && (
+          <div className="input-field-error">
+            <img
+              className="input-field-error-img"
+              src="https://kornienkokostia.github.io/online-store/assets/images/icons/error.svg"
+              alt="error"
+            ></img>
+            <span className="input-field-error-msg">{this.props.errorMsg}</span>
+          </div>
+        )}
       </div>
     );
   }
