@@ -22,7 +22,7 @@ export default class UserCardList extends Component<UserCardListProps> {
             phoneNumber={el.phoneNumber}
             birthday={el.birthday}
             country={el.country}
-            picSrc={el.picSrc}
+            picFile={el.picFile}
             recieveNotif={el.recieveNotif}
             contestToData={el.contestToData}
             key={i}

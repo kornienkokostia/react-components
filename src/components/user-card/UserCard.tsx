@@ -13,10 +13,11 @@ export const UserCard = (props: User) => {
   return (
     <div className="form-card">
       <div className="form-card-header">
-        <div
-          style={{ backgroundImage: `url(/test-images/${props.picSrc})` }}
+        <img
+          src={URL.createObjectURL(props.picFile)}
+          alt="profile-pic"
           className="form-card-img"
-        ></div>
+        ></img>
         <div>
           <p className="form-card-name">{`${props.firstName} ${props.lastName}`}</p>
           <p className="form-card-email">{props.email}</p>

@@ -111,7 +111,7 @@ export default class Form extends Component<PassedProps, FormProps> {
             phoneNumber: this.phoneNumberInput.current?.value as string,
             birthday: this.birthdayDateInput.current?.value as string,
             country: this.countrySelect.current?.value as string,
-            picSrc: this.fileSelect.current?.value.split(`\\`)[2] as string,
+            picFile: this.fileSelect.current?.files![0] as File,
             recieveNotif: this.notSendNotifSwitcher.current?.checked
               ? (this.sendNotifSwitcher.current?.value as string)
               : (this.notSendNotifSwitcher.current?.value as string),

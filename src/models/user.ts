@@ -5,7 +5,7 @@ export default interface User {
   phoneNumber: string;
   birthday: string;
   country: string;
-  picSrc: string;
+  picFile: File;
   recieveNotif: string;
   contestToData: boolean;
 }

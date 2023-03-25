@@ -35,6 +35,17 @@
   }
 }
 
+@media (any-pointer: fine) {
+  .form-card-name {
+    width: 19vw;
+    max-width: 255px;
+  }
+  .form-card-email {
+    width: 19vw;
+    max-width: 255px;
+  }
+}
+
 @media (max-width: 1070px) {
   .form-card-name {
     width: calc(50vw - 147px);
@@ -46,6 +57,17 @@
   }
 }
 
+@media (any-pointer: fine) and (max-width: 1070px) {
+  .form-card-name {
+    width: calc(50vw - 157px);
+    max-width: 385px;
+  }
+  .form-card-email {
+    width: calc(50vw - 157px);
+    max-width: 385px;
+  }
+}
+
 @media (max-width: 720px) {
   .form-card-name {
     width: calc(100vw - 160px);
@@ -53,6 +75,17 @@
   }
   .form-card-email {
     width: calc(100vw - 160px);
+    max-width: 563px;
+  }
+}
+
+@media (any-pointer: fine) and (max-width: 720px) {
+  .form-card-name {
+    width: calc(100vw - 170px);
+    max-width: 563px;
+  }
+  .form-card-email {
+    width: calc(100vw - 170px);
     max-width: 563px;
   }
 }
