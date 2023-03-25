@@ -8,6 +8,7 @@ interface PassedProps {
   validation: boolean;
   changeValidation: () => void;
   errorMsg: string;
+  testId: string;
 }
 interface InputProps {
   inputFocused: boolean;
@@ -42,6 +43,7 @@ export default class TextInput extends Component<PassedProps, InputProps> {
             this.setState({ inputFocused: true });
             return this.props.changeValidation();
           }}
+          data-testid={`${this.props.testId}`}
         />
         <span
           className={`input-field-title ${this.state.inputFocused ? 'active' : ''} ${

@@ -4,6 +4,7 @@ import './input.scss';
 interface PassedProps {
   childRef: RefObject<HTMLInputElement>;
   fieldName: string;
+  testId: string;
 }
 
 export default class DateInput extends Component<PassedProps> {
@@ -26,6 +27,7 @@ export default class DateInput extends Component<PassedProps> {
           className="input-field-input"
           ref={this.props.childRef}
           defaultValue={this.dateToday()}
+          data-testid={`${this.props.testId}`}
         />
         <span className={`input-field-title active`}>{this.props.fieldName}</span>
       </div>

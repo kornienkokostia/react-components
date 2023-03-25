@@ -29,7 +29,7 @@ export default class FormsPage extends Component<object, StateProps> {
       <>
         <div className="top-white-bg"></div>
         <div className={`user-added-popup ${this.state.popupVisible ? 'active' : ''}`}>
-          User successfully created
+          User created successfully
         </div>
         <div className="form-wrapper">
           <Form addUser={this.addUser}></Form>

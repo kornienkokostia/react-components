@@ -4,6 +4,7 @@ import './checkbox.scss';
 interface PassedProps {
   childRef: RefObject<HTMLInputElement>;
   fieldTitle: string;
+  testId: string;
 }
 
 interface CheckboxProps {
@@ -28,6 +29,7 @@ export default class Checkbox extends Component<PassedProps, CheckboxProps> {
           className="checkbox-input"
           checked={this.state.checked}
           onChange={() => this.setState({ checked: !this.state.checked })}
+          data-testid={this.props.testId}
         />
         <div
           className="checkbox-text"

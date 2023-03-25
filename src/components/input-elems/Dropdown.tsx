@@ -5,6 +5,7 @@ interface PassedProps {
   childRef: RefObject<HTMLSelectElement>;
   fieldName: string;
   options: string[];
+  testId: string;
 }
 
 export default class Dropdown extends Component<PassedProps> {
@@ -15,7 +16,12 @@ export default class Dropdown extends Component<PassedProps> {
   render() {
     return (
       <div className="input-field dropdown-input">
-        <select name="pets" className="input-field-input" ref={this.props.childRef}>
+        <select
+          name="pets"
+          className="input-field-input"
+          ref={this.props.childRef}
+          data-testid={`${this.props.testId}`}
+        >
           {this.props.options.map((el, i) => (
             <option value={el} key={i}>
               {el}

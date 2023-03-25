@@ -7,6 +7,7 @@ interface PassedProps {
   validation: boolean;
   changeValidation: () => void;
   errorMsg: string;
+  testId: string;
 }
 
 export default class FileSelect extends Component<PassedProps> {
@@ -23,6 +24,7 @@ export default class FileSelect extends Component<PassedProps> {
           accept="image/*"
           ref={this.props.childRef}
           onChange={this.props.changeValidation}
+          data-testid={this.props.testId}
         />
         <span className={`input-field-title active`}>{this.props.fieldName}</span>
         {!this.props.validation && (

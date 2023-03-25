@@ -7,6 +7,8 @@ interface PassedProps {
   radioValOne: string;
   radioValTwo: string;
   fieldTitle: string;
+  testIdOne: string;
+  testIdTwo: string;
 }
 
 interface SwitcherProps {
@@ -28,6 +30,7 @@ export default class Switcher extends Component<PassedProps, SwitcherProps> {
           <label
             className="switcher-toggler"
             onClick={() => this.setState({ checkedVal: !this.state.checkedVal })}
+            data-testid="switcher-toggler"
           >
             <div className={`bg-checkbox ${this.state.checkedVal ? 'active' : ''}`}></div>
             <i></i>
@@ -39,6 +42,7 @@ export default class Switcher extends Component<PassedProps, SwitcherProps> {
             value={this.props.radioValOne}
             checked={!this.state.checkedVal}
             onChange={() => {}}
+            data-testid={this.props.testIdOne}
           />
           <input
             type="radio"
@@ -47,6 +51,7 @@ export default class Switcher extends Component<PassedProps, SwitcherProps> {
             value={this.props.radioValTwo}
             checked={this.state.checkedVal}
             onChange={() => {}}
+            data-testid={this.props.testIdTwo}
           />
           <p className="switcher-title">{this.props.fieldTitle}</p>
         </div>

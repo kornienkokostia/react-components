@@ -149,6 +149,7 @@ export default class Form extends Component<PassedProps, FormProps> {
           validation={this.state.firstNameValidation}
           changeValidation={this.changeFirstNameValidation}
           errorMsg="Please enter a valid first name."
+          testId="first-name"
         />
         <TextInput
           childRef={this.lastNameInput}
@@ -157,6 +158,7 @@ export default class Form extends Component<PassedProps, FormProps> {
           validation={this.state.lastNameValidation}
           changeValidation={this.changeLastNameValidation}
           errorMsg="Please enter a valid last name."
+          testId="last-name"
         />
         <TextInput
           childRef={this.emailAddressInput}
@@ -165,6 +167,7 @@ export default class Form extends Component<PassedProps, FormProps> {
           validation={this.state.emailValidation}
           changeValidation={this.changeEmailValidation}
           errorMsg="Please enter a valid email."
+          testId="email"
         />
         <TextInput
           childRef={this.phoneNumberInput}
@@ -173,11 +176,21 @@ export default class Form extends Component<PassedProps, FormProps> {
           validation={this.state.phoneValidation}
           changeValidation={this.changePhoneValidation}
           errorMsg="Please enter a valid phone number."
+          testId="phone-number"
         />
 
-        <DateInput childRef={this.birthdayDateInput} fieldName="Day of the birth" />
+        <DateInput
+          childRef={this.birthdayDateInput}
+          fieldName="Day of the birth"
+          testId="birthday"
+        />
 
-        <Dropdown childRef={this.countrySelect} fieldName="Country" options={countries} />
+        <Dropdown
+          childRef={this.countrySelect}
+          fieldName="Country"
+          options={countries}
+          testId="country"
+        />
 
         <FileSelect
           childRef={this.fileSelect}
@@ -185,6 +198,7 @@ export default class Form extends Component<PassedProps, FormProps> {
           validation={this.state.fileValidation}
           changeValidation={this.changeFileValidation}
           errorMsg="Please select a file."
+          testId="file"
         ></FileSelect>
 
         <Switcher
@@ -193,10 +207,16 @@ export default class Form extends Component<PassedProps, FormProps> {
           fieldTitle="Receive notifications about new products"
           radioValOne="I want to receive notifications about new products"
           radioValTwo="I don't want to receive notifications about new products"
+          testIdOne="send-notif-one"
+          testIdTwo="send-notif-two"
         />
-        <Checkbox childRef={this.consentDataCheckbox} fieldTitle="I consent to my personal data" />
+        <Checkbox
+          childRef={this.consentDataCheckbox}
+          fieldTitle="I consent to my personal data"
+          testId="consent"
+        />
 
-        <input type="submit" value="Create" className="form-submit-btn" />
+        <input type="submit" value="Create" data-testid="create-btn" className="form-submit-btn" />
       </form>
     );
   }
