@@ -103,6 +103,13 @@ export default class Form extends Component<PassedProps, FormProps> {
             this.removeFocus(this.lastNameInput.current!);
             this.removeFocus(this.emailAddressInput.current!);
             this.removeFocus(this.phoneNumberInput.current!);
+            const switcher = this.sendNotifSwitcher.current?.closest('.switcher-content')
+              ?.children[0] as HTMLLabelElement;
+            const switcherBg =
+              this.sendNotifSwitcher.current?.closest('.switcher-content')?.children[0].children[0];
+            switcherBg?.classList.contains('active') ? switcher.click() : false;
+            this.consentDataCheckbox.current?.click();
+            this.consentDataCheckbox.current?.click();
           });
           return this.props.addUser({
             firstName: this.firstNameInput.current?.value as string,
@@ -140,7 +147,7 @@ export default class Form extends Component<PassedProps, FormProps> {
 
   render() {
     return (
-      <form className="form" onSubmit={(e) => this.handleSubmit(e)}>
+      <form className="form" role="form" onSubmit={(e) => this.handleSubmit(e)}>
         <h1 className="form-title">Create user:</h1>
         <TextInput
           childRef={this.firstNameInput}

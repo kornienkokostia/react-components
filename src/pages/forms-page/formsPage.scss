@@ -11,13 +11,16 @@
     width: 100%;
   }
   &-user-cards {
-    width: 100%;
-    max-width: 1200px;
-    padding: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
     row-gap: 20px;
+    min-height: 252px;
+    &-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+    }
   }
 }
 .top-white-bg {
