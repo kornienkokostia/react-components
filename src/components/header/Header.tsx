@@ -1,91 +1,58 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './header.scss';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-interface WithRouterProps {
-  location: ReturnType<typeof useLocation>;
-  params: Record<string, string>;
-  navigate: ReturnType<typeof useNavigate>;
+interface HeaderLinkProps {
+  page: string;
+  path: string;
 }
 
-const withRouter = <Props extends WithRouterProps>(Component: React.ComponentType<Props>) => {
-  return function Res(props: Omit<Props, keyof WithRouterProps>) {
-    const location = useLocation();
-    const params = useParams();
-    const navigate = useNavigate();
+export const Header = () => {
+  const [currentPage, setCurrentPage] = useState('Home');
 
-    return (
-      <Component {...(props as Props)} location={location} params={params} navigate={navigate} />
-    );
-  };
-};
-
-interface HeaderProps extends WithRouterProps {
-  children?: React.ReactNode;
-}
-
-interface PageState {
-  currentPage: string;
-}
-class Header extends React.Component<HeaderProps, PageState> {
-  state = {
-    currentPage: 'Home',
-  };
-
-  handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    const link = e.target as HTMLElement;
-    const page = link.textContent as string;
-    this.setState({ currentPage: page });
-  };
-
-  componentDidMount(): void {
-    const { location } = this.props;
-    switch (location.pathname) {
+  useEffect(() => {
+    switch (window.location.pathname) {
       case '/':
-        this.setState({ currentPage: 'Home' });
+        setCurrentPage('Home');
         break;
       case '/about':
-        this.setState({ currentPage: 'About' });
+        setCurrentPage('About');
         break;
       case '/forms':
-        this.setState({ currentPage: 'Forms' });
+        setCurrentPage('Forms');
         break;
       default:
-        this.setState({ currentPage: 'Error' });
+        setCurrentPage('Error');
         break;
     }
-  }
+  }, []);
 
-  render(): JSX.Element {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    const link = e.target as HTMLElement;
+    const page = link.textContent as string;
+    setCurrentPage(page);
+  };
+
+  const HeaderLink = (props: HeaderLinkProps) => {
     return (
-      <div className="header-container">
-        <div className="header">
-          <Link
-            to={'/'}
-            className={`header-item ${this.state.currentPage === 'Home' ? 'active' : ''}`}
-            onClick={(e) => this.handleLinkClick(e)}
-          >
-            Home
-          </Link>
-          <Link
-            to={'/about'}
-            className={`header-item ${this.state.currentPage === 'About' ? 'active' : ''}`}
-            onClick={(e) => this.handleLinkClick(e)}
-          >
-            About
-          </Link>
-          <Link
-            to={'/forms'}
-            className={`header-item ${this.state.currentPage === 'Forms' ? 'active' : ''}`}
-            onClick={(e) => this.handleLinkClick(e)}
-          >
-            Forms
-          </Link>
-        </div>
-        <div className="header-current-page">{`${this.state.currentPage} Page`}</div>
-      </div>
+      <Link
+        to={`/${props.path}`}
+        className={`header-item ${currentPage === props.page ? 'active' : ''}`}
+        onClick={(e) => handleLinkClick(e)}
+      >
+        {props.page}
+      </Link>
     );
-  }
-}
+  };
 
-export default withRouter(Header);
+  return (
+    <div className="header-container">
+      <div className="header">
+        <HeaderLink page="Home" path="" />
+        <HeaderLink page="About" path="about" />
+        <HeaderLink page="Forms" path="forms" />
+      </div>
+      <div className="header-current-page">{`${currentPage} Page`}</div>
+    </div>
+  );
+};

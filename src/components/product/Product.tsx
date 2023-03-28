@@ -1,7 +1,6 @@
 import IProduct from '../../models/products';
 import './product.scss';
-
-import React, { Component } from 'react';
+import React from 'react';
 
 interface Props {
   product: IProduct;
@@ -13,7 +12,7 @@ interface RatingProps {
 
 const capitilizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-export const setGoodsItemName = (item: IProduct) => `${capitilizeFirstLetter(item.brand)} 
+const setGoodsItemName = (item: IProduct) => `${capitilizeFirstLetter(item.brand)} 
   ${item.name} 
   ${item.category === 'laptops' ? item.displaySize : ''} 
   ${item.storage && item.category !== 'watches' && item.brand !== 'samsung' ? item.storage : ''} 
@@ -24,7 +23,7 @@ export const setGoodsItemName = (item: IProduct) => `${capitilizeFirstLetter(ite
   } 
   ${item.model}`;
 
-export const Rating = (props: RatingProps) => {
+const Rating = (props: RatingProps) => {
   const stars = [];
   for (let i = 0; i < 5; i++) {
     if (i < props.rating) {
@@ -61,23 +60,21 @@ export const Rating = (props: RatingProps) => {
   return <div className="product-info-rating">{stars}</div>;
 };
 
-export default class Product extends Component<Props> {
-  currProduct: IProduct = this.props.product;
+export const Product = (props: Props) => {
+  const currProduct: IProduct = props.product;
 
-  render() {
-    return (
-      <div className="product" data-testid="product">
-        <img src={this.currProduct.imgs[0]} alt="product" className="product-image" />
-        <div className="product-info">
-          <div className="product-info-name">{setGoodsItemName(this.currProduct)}</div>
-          <div className="product-info-stock">{`Stock: ${this.currProduct.stock}`}</div>
-          <Rating rating={this.currProduct.rating} />
-          <div className="product-info-price-buy">
-            <div className="product-info-price">{`$${this.currProduct.price}`}</div>
-            <button className="product-info-buy">Buy</button>
-          </div>
+  return (
+    <div className="product" data-testid="product">
+      <img src={currProduct.imgs[0]} alt="product" className="product-image" />
+      <div className="product-info">
+        <div className="product-info-name">{setGoodsItemName(currProduct)}</div>
+        <div className="product-info-stock">{`Stock: ${currProduct.stock}`}</div>
+        <Rating rating={currProduct.rating} />
+        <div className="product-info-price-buy">
+          <div className="product-info-price">{`$${currProduct.price}`}</div>
+          <button className="product-info-buy">Buy</button>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
