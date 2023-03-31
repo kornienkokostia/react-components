@@ -63,7 +63,7 @@
     }
   }
   &-error {
-    display: flex;
+    display: none;
     color: #e30000;
     margin-bottom: 12px;
     margin-top: -5px;
@@ -75,6 +75,9 @@
     }
     &-msg {
       padding-left: 5px;
+    }
+    &.active {
+      display: flex;
     }
   }
 }

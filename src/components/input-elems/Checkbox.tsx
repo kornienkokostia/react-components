@@ -1,43 +1,31 @@
-import React, { Component, RefObject } from 'react';
+import React, { useState } from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form/dist/types';
 import './checkbox.scss';
 
 interface PassedProps {
-  childRef: RefObject<HTMLInputElement>;
   fieldTitle: string;
+  name: string;
+  register: UseFormRegister<FieldValues>;
+  checked: boolean;
+  setChecked: React.Dispatch<React.SetStateAction<boolean>>;
   testId: string;
 }
 
-interface CheckboxProps {
-  checked: boolean;
-}
-
-export default class Checkbox extends Component<PassedProps, CheckboxProps> {
-  constructor(props: PassedProps) {
-    super(props);
-    this.state = {
-      checked: false,
-    };
-  }
-
-  render() {
-    return (
-      <div className="checkbox">
-        <input
-          type="checkbox"
-          ref={this.props.childRef}
-          value={'I consent to my personal data'}
-          className="checkbox-input"
-          checked={this.state.checked}
-          onChange={() => this.setState({ checked: !this.state.checked })}
-          data-testid={this.props.testId}
-        />
-        <div
-          className="checkbox-text"
-          onClick={() => this.setState({ checked: !this.state.checked })}
-        >
-          {this.props.fieldTitle}
-        </div>
+export const Checkbox = (props: PassedProps) => {
+  return (
+    <div className="checkbox">
+      <input
+        type="checkbox"
+        value={props.fieldTitle}
+        className="checkbox-input"
+        checked={props.checked}
+        {...props.register(props.name)}
+        onChange={() => props.setChecked((prev) => !prev)}
+        data-testid={props.testId}
+      />
+      <div className="checkbox-text" onClick={() => props.setChecked((prev) => !prev)}>
+        {props.fieldTitle}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};

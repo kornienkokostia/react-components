@@ -6,15 +6,17 @@
     position: relative;
   }
   &-input {
-    height: 18px;
-    width: 18px;
-    min-width: 18px;
+    height: 20px;
+    width: 20px;
+    min-width: 20px;
+    opacity: 0;
+    cursor: pointer;
     &:nth-of-type(1) {
       margin-left: 1px;
       margin-top: 0.5px;
     }
     &:nth-of-type(2) {
-      margin-left: -5px;
+      margin-left: -8px;
     }
   }
   &-title {
@@ -24,6 +26,7 @@
     display: inline-block;
     position: absolute;
     cursor: pointer;
+    pointer-events: none;
     width: 33px;
     -webkit-tap-highlight-color: transparent;
     & i {
@@ -54,7 +57,7 @@
         background-color: #68cd67;
       }
       &.active + i::after {
-        transform: translate3d(14px, 1px, 0);
+        transform: translate3d(13.5px, 1px, 0);
         box-shadow: -1px 0px 3px rgba(0, 0, 0, 0.1);
       }
     }

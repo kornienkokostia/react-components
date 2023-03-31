@@ -14,11 +14,7 @@ export const UserCard = (props: User) => {
     <div className="form-card" role="listitem">
       <div className="form-card-header">
         {props.picFile && (
-          <img
-            src={URL.createObjectURL(props.picFile as File)}
-            alt="profile-pic"
-            className="form-card-img"
-          ></img>
+          <img src={props.picFile} alt="profile-pic" className="form-card-img"></img>
         )}
 
         <div>
@@ -42,7 +38,7 @@ export const UserCard = (props: User) => {
           {props.country}
         </p>
         <p>{props.recieveNotif}</p>
-        {props.contestToData && <p>I contest to my personal data</p>}
+        {props.contestToData && <p>{props.contestToData}</p>}
       </div>
     </div>
   );

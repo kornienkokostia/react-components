@@ -1,43 +1,43 @@
-import React, { Component, RefObject } from 'react';
+import React from 'react';
 import './input.scss';
+import { FieldValues, UseFormRegister, FieldErrors } from 'react-hook-form/dist/types';
+import { FormFieldErrors } from '../../models/form';
 
 interface PassedProps {
-  childRef: RefObject<HTMLInputElement>;
-  fieldName: string;
-  validation: boolean;
-  changeValidation: () => void;
-  errorMsg: string;
+  name: string;
+  fieldTitle: string;
+  requestedErrorMsg: string;
   testId: string;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
 }
 
-export default class FileSelect extends Component<PassedProps> {
-  constructor(props: PassedProps) {
-    super(props);
-  }
+export const FileSelect = (props: PassedProps) => {
+  const errors = props.errors[props.name] as FormFieldErrors | undefined;
 
-  render() {
-    return (
-      <div className="input-field file-input">
-        <input
-          type="file"
-          className={`input-field-input ${!this.props.validation ? 'error' : ''}`}
-          accept="image/*"
-          ref={this.props.childRef}
-          onChange={this.props.changeValidation}
-          data-testid={this.props.testId}
-        />
-        <span className={`input-field-title active`}>{this.props.fieldName}</span>
-        {!this.props.validation && (
-          <div className="input-field-error">
-            <img
-              className="input-field-error-img"
-              src="https://kornienkokostia.github.io/online-store/assets/images/icons/error.svg"
-              alt="error"
-            ></img>
-            <span className="input-field-error-msg">{this.props.errorMsg}</span>
-          </div>
-        )}
+  return (
+    <div className="input-field file-input">
+      <input
+        className={`input-field-input ${errors !== undefined ? 'error' : ''}`}
+        type="file"
+        accept="image/*"
+        {...props.register(props.name, {
+          required: props.requestedErrorMsg,
+        })}
+        data-testid={props.testId}
+      />
+      <span className={`input-field-title active ${errors !== undefined ? 'error' : ''}`}>
+        {props.fieldTitle}
+      </span>
+
+      <div className={`input-field-error ${errors !== undefined ? 'active' : ''}`}>
+        <img
+          className="input-field-error-img"
+          src="https://kornienkokostia.github.io/online-store/assets/images/icons/error.svg"
+          alt="error"
+        ></img>
+        <span className="input-field-error-msg">{errors !== undefined ? errors.message : ''}</span>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};

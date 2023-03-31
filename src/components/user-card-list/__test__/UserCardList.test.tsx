@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import User from '../../../models/user';
-import UserCardList from '../UserCardList';
+import { UserCardList } from '../UserCardList';
 
 describe('UserCardList', () => {
   const users: User[] = [
@@ -12,6 +12,7 @@ describe('UserCardList', () => {
       phoneNumber: '123-456-7890',
       birthday: '01/01/1990',
       country: 'USA',
+      picFile: '',
       recieveNotif: 'Yes',
       contestToData: true,
     },

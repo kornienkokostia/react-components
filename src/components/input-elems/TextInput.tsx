@@ -1,68 +1,62 @@
-import React, { Component, RefObject } from 'react';
+import React, { useState } from 'react';
+import { FieldValues, UseFormRegister, FieldErrors } from 'react-hook-form/dist/types';
 import './input.scss';
+import { FormFieldErrors } from '../../models/form';
 
 interface PassedProps {
-  childRef: RefObject<HTMLInputElement>;
-  fieldName: string;
+  name: string;
+  fieldTitle: string;
   typeName: 'text' | 'email' | 'number';
-  validation: boolean;
-  changeValidation: () => void;
-  errorMsg: string;
+  filedValid: RegExp;
+  requestedErrorMsg: string;
+  patternErrorMsg: string;
   testId: string;
-}
-interface InputProps {
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
   inputFocused: boolean;
-  valid: boolean;
+  setInputFocused: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default class TextInput extends Component<PassedProps, InputProps> {
-  constructor(props: PassedProps) {
-    super(props);
-    this.state = {
-      inputFocused: false,
-      valid: props.validation,
-    };
-  }
-
-  handleFocus = () => {
-    this.props.childRef.current?.value.length === 0
-      ? this.setState({ inputFocused: !this.state.inputFocused })
-      : false;
+export const TextInput = (props: PassedProps) => {
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+    e.currentTarget.value.length === 0 ? props.setInputFocused((prev) => !prev) : false;
   };
 
-  render() {
-    return (
-      <div className="input-field text-input">
-        <input
-          type={this.props.typeName}
-          className={`input-field-input ${!this.props.validation ? 'error' : ''}`}
-          ref={this.props.childRef}
-          onFocus={this.handleFocus}
-          onBlur={this.handleFocus}
-          onInput={() => {
-            this.setState({ inputFocused: true });
-            return this.props.changeValidation();
-          }}
-          data-testid={`${this.props.testId}`}
-        />
-        <span
-          className={`input-field-title ${this.state.inputFocused ? 'active' : ''} ${
-            !this.props.validation ? 'error' : ''
-          }`}
-        >
-          {this.props.fieldName}
-        </span>
-        {!this.props.validation && (
-          <div className="input-field-error">
-            <img
-              className="input-field-error-img"
-              src="https://kornienkokostia.github.io/online-store/assets/images/icons/error.svg"
-              alt="error"
-            ></img>
-            <span className="input-field-error-msg">{this.props.errorMsg}</span>
-          </div>
-        )}
+  const errors = props.errors[props.name] as FormFieldErrors | undefined;
+
+  return (
+    <div className="input-field text-input">
+      <input
+        className={`input-field-input ${errors !== undefined ? 'error' : ''}`}
+        type={props.typeName}
+        {...props.register(props.name, {
+          required: props.requestedErrorMsg,
+          pattern: {
+            value: props.filedValid,
+            message: props.patternErrorMsg,
+          },
+        })}
+        onFocus={handleFocus}
+        onBlur={handleFocus}
+        onInput={() => props.setInputFocused(true)}
+        data-testid={props.testId}
+      />
+      <span
+        className={`input-field-title ${props.inputFocused ? 'active' : ''} ${
+          errors !== undefined ? 'error' : ''
+        }`}
+      >
+        {props.fieldTitle}
+      </span>
+
+      <div className={`input-field-error ${errors !== undefined ? 'active' : ''}`}>
+        <img
+          className="input-field-error-img"
+          src="https://kornienkokostia.github.io/online-store/assets/images/icons/error.svg"
+          alt="error"
+        ></img>
+        <span className="input-field-error-msg">{errors !== undefined ? errors.message : ''}</span>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
