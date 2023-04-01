@@ -21,7 +21,6 @@ export const Form = (props: PassedProps) => {
     handleSubmit,
     formState: { errors },
     reset,
-    setFocus,
   } = useForm();
   const [firstNameFocused, setFirstNameFocused] = useState<boolean>(false);
   const [lastNameFocused, setLastNameFocused] = useState<boolean>(false);
@@ -42,7 +41,6 @@ export const Form = (props: PassedProps) => {
       sendNotif,
       contestToData,
     } = data as FormData;
-    console.log(data);
     props.addUser({
       firstName: firstName,
       lastName: lastName,
