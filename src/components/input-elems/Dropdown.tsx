@@ -1,4 +1,4 @@
-import React, { Component, RefObject } from 'react';
+import React from 'react';
 import './input.scss';
 import { FieldValues, UseFormRegister } from 'react-hook-form/dist/types';
 
