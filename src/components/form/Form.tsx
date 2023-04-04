@@ -123,6 +123,8 @@ export const Form = (props: PassedProps) => {
         register={register}
         fieldTitle="Day of the birth"
         testId="birthday"
+        errors={errors}
+        requestedErrorMsg="Please select a date of the birth."
       />
       <Dropdown
         name="country"
