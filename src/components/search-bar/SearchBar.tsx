@@ -1,16 +1,17 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './searchBar.scss';
 
 export const SearchBar = () => {
   const [input, setInput] = useState(localStorage.getItem('input') || '');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    localStorage.setItem('input', input);
-  });
+    const input = inputRef.current as HTMLInputElement;
+    return () => localStorage.setItem('input', input.value);
+  }, []);
 
-  const handleInput = (e: FormEvent<HTMLInputElement>) => {
-    const el = e.target as HTMLInputElement;
-    setInput(el.value);
+  const handleInput = () => {
+    inputRef.current && setInput(inputRef.current.value);
   };
   return (
     <div className="search-bar">
@@ -32,7 +33,8 @@ export const SearchBar = () => {
         className="search-bar-input"
         placeholder="Search"
         value={input}
-        onInput={(e) => handleInput(e)}
+        onInput={handleInput}
+        ref={inputRef}
       />
     </div>
   );
