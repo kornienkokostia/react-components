@@ -1,15 +1,17 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import './searchBar.scss';
 
 export const SearchBar = () => {
   const [input, setInput] = useState(localStorage.getItem('input') || '');
 
+  useEffect(() => {
+    localStorage.setItem('input', input);
+  });
+
   const handleInput = (e: FormEvent<HTMLInputElement>) => {
     const el = e.target as HTMLInputElement;
     setInput(el.value);
-    localStorage.setItem('input', el.value);
   };
-
   return (
     <div className="search-bar">
       <svg

@@ -156,6 +156,8 @@ export const Form = (props: PassedProps) => {
         fieldTitle="I consent to my personal data"
         checked={checkedContestToData}
         setChecked={setCheckedContestToData}
+        errors={errors}
+        requestedErrorMsg="Please agree to our terms."
         testId="contest-to-data"
       />
       <input type="submit" value="Create" data-testid="create-btn" className="form-submit-btn" />
