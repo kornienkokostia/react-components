@@ -40,6 +40,7 @@ export const TextInput = (props: PassedProps) => {
         onBlur={handleFocus}
         onInput={() => props.setInputFocused(true)}
         data-testid={props.testId}
+        autoComplete="nope"
       />
       <span
         className={`input-field-title ${props.inputFocused ? 'active' : ''} ${

@@ -123,6 +123,8 @@ export const Form = (props: PassedProps) => {
         register={register}
         fieldTitle="Day of the birth"
         testId="birthday"
+        errors={errors}
+        requestedErrorMsg="Please select a date of the birth."
       />
       <Dropdown
         name="country"
@@ -156,6 +158,8 @@ export const Form = (props: PassedProps) => {
         fieldTitle="I consent to my personal data"
         checked={checkedContestToData}
         setChecked={setCheckedContestToData}
+        errors={errors}
+        requestedErrorMsg="Please agree to our terms."
         testId="contest-to-data"
       />
       <input type="submit" value="Create" data-testid="create-btn" className="form-submit-btn" />
