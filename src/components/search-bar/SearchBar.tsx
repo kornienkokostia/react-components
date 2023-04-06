@@ -1,13 +1,25 @@
-import React, { FormEvent, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './searchBar.scss';
+import { useMoviesList } from '../../context/MoviesListContext';
 
 export const SearchBar = () => {
   const [input, setInput] = useState(localStorage.getItem('input') || '');
+  // const inputRef = useRef<HTMLInputElement>(null);
+  const { updateMoviesList } = useMoviesList();
 
-  const handleInput = (e: FormEvent<HTMLInputElement>) => {
-    const el = e.target as HTMLInputElement;
-    setInput(el.value);
-    localStorage.setItem('input', el.value);
+  // useEffect(() => {
+  //   const input = inputRef.current as HTMLInputElement;
+  //   return () => localStorage.setItem('input', input.value);
+  // }, []);
+
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    // inputRef.current && setInput(inputRef.current.value);
+    setInput(e.currentTarget.value);
+  };
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      updateMoviesList(input);
+    }
   };
 
   return (
@@ -28,9 +40,11 @@ export const SearchBar = () => {
       <input
         type="text"
         className="search-bar-input"
-        placeholder="Search"
+        placeholder="Find in Movies"
         value={input}
         onInput={(e) => handleInput(e)}
+        onKeyDown={(e) => handleKeyDown(e)}
+        // ref={inputRef}
       />
     </div>
   );

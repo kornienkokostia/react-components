@@ -1,4 +1,4 @@
-import { PopularMoviesResponse } from '../models/movie';
+import { MovieResponse, MoviesResponse } from '../models/movie';
 import { useHttp } from './http.hook';
 
 const IMDBService = () => {
@@ -12,12 +12,20 @@ const IMDBService = () => {
   const _imageOriginal = 'https://image.tmdb.org/t/p/original';
 
   const getPopularMovies = async () =>
+    (await request(`${_apiBase}/movie/popular?${_apiKey3}&${_apiLang}&page=1`)) as MoviesResponse;
+
+  const getSearchReasults = async (query: string) =>
     (await request(
-      `${_apiBase}/movie/popular?${_apiKey3}&${_apiLang}&page=1`
-    )) as PopularMoviesResponse;
+      `${_apiBase}/search/movie?${_apiKey3}&${_apiLang}&query=${query}&page=1`
+    )) as MoviesResponse;
+
+  const getMovie = async (id: number) =>
+    (await request(`${_apiBase}/movie/${id}?${_apiKey3}&${_apiLang}`)) as MovieResponse;
 
   return {
     getPopularMovies,
+    getSearchReasults,
+    getMovie,
     _imageBig,
   };
 };

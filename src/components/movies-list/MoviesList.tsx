@@ -4,15 +4,21 @@ import IMDBService from '../../services/IMDBService';
 import { Movie } from '../../models/movie';
 import { useMoviesList } from '../../context/MoviesListContext';
 import { MoviesListCard } from './movies-list-card/MoviesListCard';
+import { DotSpinner } from '../dots-spinner/DotSpinner';
 
 export const MoviesList = () => {
-  const { moviesList } = useMoviesList();
+  const { moviesList, moviesSearchActive, moviesListLoading } = useMoviesList();
 
   return (
     <>
-      <h1 className="movies-list-title">Movies List</h1>
+      <h1 className="movies-list-title">
+        {moviesSearchActive ? 'Movies Search Results' : 'Popular Movies'}
+      </h1>
       <div className="movies-list">
-        {moviesList && moviesList.map((el, i) => <MoviesListCard movie={el} key={i} />)}
+        {moviesListLoading && <DotSpinner theme="light" size="big" />}
+        {!moviesListLoading &&
+          moviesList &&
+          moviesList.map((el, i) => <MoviesListCard movie={el} key={i} />)}
       </div>
     </>
   );
