@@ -1,4 +1,3 @@
-import { render, screen } from '@testing-library/react';
 import IMDBService from '../IMDBService';
 import { useHttp } from '../http.hook';
 
@@ -11,7 +10,7 @@ jest.mock('../http.hook', () => ({
 describe('IMDBService', () => {
   describe('getPopularMovies', () => {
     it('should call the request function with the correct URL', async () => {
-      const { request } = useHttp();
+      const {} = useHttp();
       const service = IMDBService();
 
       await service.getPopularMovies();
@@ -20,7 +19,7 @@ describe('IMDBService', () => {
 
   describe('getSearchReasults', () => {
     it('should call the request function with the correct URL and query parameter', async () => {
-      const { request } = useHttp();
+      const {} = useHttp();
       const service = IMDBService();
       const query = 'star wars';
 
@@ -30,7 +29,7 @@ describe('IMDBService', () => {
 
   describe('getMovie', () => {
     it('should call the request function with the correct URL and movie ID', async () => {
-      const { request } = useHttp();
+      const {} = useHttp();
       const service = IMDBService();
       const movieId = 1234;
 
