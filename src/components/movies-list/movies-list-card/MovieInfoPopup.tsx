@@ -17,7 +17,7 @@ export const MovieInfoPopup = (props: Props) => {
 
   useEffect(() => {
     onRequest(props.movieId);
-  }, []);
+  }, [props.movieId]);
 
   const onRequest = async (id: number) => {
     const movieResponse = await IMDBService().getMovie(id);

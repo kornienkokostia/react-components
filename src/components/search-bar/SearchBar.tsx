@@ -1,19 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import './searchBar.scss';
 import { useMoviesList } from '../../context/MoviesListContext';
 
 export const SearchBar = () => {
   const [input, setInput] = useState(localStorage.getItem('input') || '');
-  // const inputRef = useRef<HTMLInputElement>(null);
   const { updateMoviesList } = useMoviesList();
 
-  // useEffect(() => {
-  //   const input = inputRef.current as HTMLInputElement;
-  //   return () => localStorage.setItem('input', input.value);
-  // }, []);
-
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
-    // inputRef.current && setInput(inputRef.current.value);
     setInput(e.currentTarget.value);
   };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -44,7 +37,7 @@ export const SearchBar = () => {
         value={input}
         onInput={(e) => handleInput(e)}
         onKeyDown={(e) => handleKeyDown(e)}
-        // ref={inputRef}
+        data-testid="input"
       />
     </div>
   );

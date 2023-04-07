@@ -26,7 +26,6 @@ export const MoviesListProvider = (props: Props) => {
 
   useEffect(() => {
     updateMoviesList();
-    console.log('update');
   }, []);
 
   const updateMoviesList = async (search?: string) => {

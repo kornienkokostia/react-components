@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './moviesList.scss';
-import IMDBService from '../../services/IMDBService';
-import { Movie } from '../../models/movie';
 import { useMoviesList } from '../../context/MoviesListContext';
 import { MoviesListCard } from './movies-list-card/MoviesListCard';
 import { DotSpinner } from '../dots-spinner/DotSpinner';

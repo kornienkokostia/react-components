@@ -2,7 +2,6 @@ import React from 'react';
 import './movieAllInfo.scss';
 import { MovieResponse } from '../../../models/movie';
 import IMDBService from '../../../services/IMDBService';
-import Rating from '../../../assets/rating.svg';
 
 interface Props {
   movie: MovieResponse;
@@ -40,7 +39,18 @@ export const MovieAllInfo = (props: Props) => {
             {movie.runtime && <span className="movie-info-item">{convertTime(movie.runtime)}</span>}
           </div>
           <div className="movie-info-rating">
-            <img src={Rating} alt="rating" className="movie-info-rating-icon" />
+            <svg
+              width="13"
+              height="14"
+              viewBox="0 0 13 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.49599 0.172974L4.52099 5.25097H0.00698853L3.74499 8.00197L2.26399 13.151L6.49599 9.76497L10.728 13.151L9.24599 8.00197L12.985 5.25097H8.47099L6.49599 0.172974Z"
+                fill="#FF9500"
+              />
+            </svg>
             <span>{movie.vote_average !== 0 ? movie.vote_average.toFixed(1) : 0}</span>
           </div>
           <div className="movie-info-overview">{movie.overview}</div>
