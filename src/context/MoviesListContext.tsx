@@ -25,7 +25,9 @@ export const MoviesListProvider = (props: Props) => {
   const [moviesSearchActive, setMoviesSearchActive] = useState<boolean>(false);
 
   useEffect(() => {
-    updateMoviesList();
+    if (localStorage.getItem('input') && localStorage.getItem('input')?.length !== 0) {
+      setMoviesSearchActive(true);
+    }
   }, []);
 
   const updateMoviesList = async (search?: string) => {
