@@ -13,7 +13,7 @@ export const SearchBar = () => {
     return () => localStorage.setItem('input', inputEl.value);
   }, []);
 
-  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleInput = () => {
     inputRef.current && setInput(inputRef.current.value);
   };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -42,7 +42,7 @@ export const SearchBar = () => {
         className="search-bar-input"
         placeholder="Find in Movies"
         value={input}
-        onInput={(e) => handleInput(e)}
+        onInput={handleInput}
         onKeyDown={(e) => handleKeyDown(e)}
         data-testid="input"
         ref={inputRef}
