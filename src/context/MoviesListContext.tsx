@@ -28,6 +28,7 @@ export const MoviesListProvider = (props: Props) => {
     if (localStorage.getItem('input') && localStorage.getItem('input')?.length !== 0) {
       setMoviesSearchActive(true);
     }
+    updateMoviesList(localStorage.getItem('input') || undefined);
   }, []);
 
   const updateMoviesList = async (search?: string) => {

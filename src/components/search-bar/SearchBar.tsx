@@ -9,9 +9,8 @@ export const SearchBar = () => {
 
   useEffect(() => {
     const inputEl = inputRef.current as HTMLInputElement;
-    updateMoviesList(inputEl.value);
     return () => localStorage.setItem('input', inputEl.value);
-  }, []);
+  });
 
   const handleInput = () => {
     inputRef.current && setInput(inputRef.current.value);
