@@ -5,34 +5,30 @@ import { DotSpinner } from '../dots-spinner/DotSpinner';
 import { useGetPopularMoviesQuery } from '../../services/themoviedb';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../store/store';
-import { updateMovies } from '../../store/movieSlice';
-import { Movie, MovieResponse, MoviesResponse } from '../../models/movie';
-
-interface RootState {
-  movies: {
-    search: string;
-    movies: Movie[];
-  };
-}
+import { setMoviesLoading, updateMovies } from '../../store/movieSlice';
+import { RootState } from '../../models/root-state';
 
 export const MoviesList = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { movies, search } = useSelector((state: RootState) => state.movies);
+  const { movies, searchMode, moviesLoading } = useSelector((state: RootState) => state.movies);
   const { data, isLoading } = useGetPopularMoviesQuery();
+
   useEffect(() => {
-    if (data) {
+    dispatch(setMoviesLoading(isLoading));
+    if (data && !searchMode) {
+      console.log('use');
       dispatch(updateMovies(data.results));
     }
-  });
+  }, [dispatch, data, searchMode, isLoading]);
 
   return (
     <>
       <h1 className="movies-list-title">
-        {search.length ? 'Movies Search Results' : 'Popular Movies'}
+        {searchMode ? 'Movies Search Results' : 'Popular Movies'}
       </h1>
       <div className="movies-list">
-        {isLoading && <DotSpinner theme="light" size="big" />}
-        {!isLoading && movies && movies.map((el, i) => <MoviesListCard movie={el} key={i} />)}
+        {moviesLoading && <DotSpinner theme="light" size="big" />}
+        {!moviesLoading && movies && movies.map((el, i) => <MoviesListCard movie={el} key={i} />)}
       </div>
     </>
   );

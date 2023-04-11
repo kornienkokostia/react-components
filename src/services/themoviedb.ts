@@ -19,4 +19,4 @@ export const themoviedbApi = createApi({
   }),
 });
 
-export const { useGetPopularMoviesQuery, useGetSearchReasultsQuery } = themoviedbApi;
+export const { useGetPopularMoviesQuery, useLazyGetSearchReasultsQuery } = themoviedbApi;
