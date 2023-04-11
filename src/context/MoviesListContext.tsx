@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import IMDBService from '../services/IMDBService';
 import { Movie } from '../models/movie';
+import { useSelector } from 'react-redux';
 
 interface MoviesListContextProps {
   moviesList: Movie[];
@@ -14,6 +15,11 @@ const MoviesListContext = React.createContext<MoviesListContextProps>({} as Movi
 interface Props {
   children: JSX.Element[];
 }
+interface RootState {
+  movies: {
+    search: string;
+  };
+}
 
 export const useMoviesList = () => {
   return useContext(MoviesListContext);
@@ -23,14 +29,14 @@ export const MoviesListProvider = (props: Props) => {
   const [moviesList, setMoviesList] = useState<Movie[]>([]);
   const [moviesListLoading, setMoviesListLoading] = useState<boolean>(true);
   const [moviesSearchActive, setMoviesSearchActive] = useState<boolean>(false);
+  const { search } = useSelector((state: RootState) => state.movies);
 
   useEffect(() => {
-    if (localStorage.getItem('input') && localStorage.getItem('input')?.length !== 0) {
+    if (search.length !== 0) {
       setMoviesSearchActive(true);
     }
-    updateMoviesList(localStorage.getItem('input') || undefined);
+    updateMoviesList(search || undefined);
   }, []);
-
   const updateMoviesList = async (search?: string) => {
     if (search) {
       setMoviesListLoading(true);

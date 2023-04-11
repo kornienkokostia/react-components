@@ -1,23 +1,31 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import './searchBar.scss';
-import { useMoviesList } from '../../context/MoviesListContext';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store/store';
+import { setSearch, updateMovies } from '../../store/movieSlice';
+import { useGetSearchReasultsQuery } from '../../services/themoviedb';
+
+interface RootState {
+  movies: {
+    search: string;
+  };
+}
 
 export const SearchBar = () => {
-  const [input, setInput] = useState(localStorage.getItem('input') || '');
-  const { updateMoviesList } = useMoviesList();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const { search } = useSelector((state: RootState) => state.movies);
 
-  useEffect(() => {
-    const inputEl = inputRef.current as HTMLInputElement;
-    return () => localStorage.setItem('input', inputEl.value);
-  });
+  const dispatch = useDispatch<AppDispatch>();
 
-  const handleInput = () => {
-    inputRef.current && setInput(inputRef.current.value);
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    dispatch(setSearch(e.currentTarget.value));
   };
+
+  const { data } = useGetSearchReasultsQuery(search);
+  // dispatch(updateMovies(data!.results));
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      updateMoviesList(input);
+      console.log(data);
     }
   };
 
@@ -40,11 +48,10 @@ export const SearchBar = () => {
         type="text"
         className="search-bar-input"
         placeholder="Find in Movies"
-        value={input}
-        onInput={handleInput}
+        value={search}
+        onInput={(e) => handleInput(e)}
         onKeyDown={(e) => handleKeyDown(e)}
         data-testid="input"
-        ref={inputRef}
       />
     </div>
   );
