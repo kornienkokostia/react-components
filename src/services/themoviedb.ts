@@ -16,7 +16,11 @@ export const themoviedbApi = createApi({
     getSearchReasults: builder.query<MoviesResponse, string>({
       query: (query) => `/search/movie?${_apiKey3}&${_apiLang}&query=${query}&page=1`,
     }),
+    getMovie: builder.query<MovieResponse, number>({
+      query: (id) => `/movie/${id}?${_apiKey3}&${_apiLang}`,
+    }),
   }),
 });
 
-export const { useGetPopularMoviesQuery, useLazyGetSearchReasultsQuery } = themoviedbApi;
+export const { useGetPopularMoviesQuery, useLazyGetSearchReasultsQuery, useGetMovieQuery } =
+  themoviedbApi;

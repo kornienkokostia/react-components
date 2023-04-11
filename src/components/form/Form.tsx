@@ -7,15 +7,15 @@ import { Checkbox } from '../input-elems/Checkbox';
 import { FileSelect } from '../input-elems/FileSelect';
 import countries from '../../db/countriesDB';
 import './form.scss';
-import User from '../../models/user';
 import { useForm } from 'react-hook-form';
 import { FormData } from '../../models/form';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store/store';
+import { addUser, setShowPopup } from '../../store/userSlice';
 
-interface PassedProps {
-  addUser: (user: User) => void;
-}
+export const Form = () => {
+  const dispatch = useDispatch<AppDispatch>();
 
-export const Form = (props: PassedProps) => {
   const {
     register,
     handleSubmit,
@@ -41,17 +41,21 @@ export const Form = (props: PassedProps) => {
       sendNotif,
       contestToData,
     } = data as FormData;
-    props.addUser({
-      firstName: firstName,
-      lastName: lastName,
-      email: emailAddress,
-      phoneNumber: phoneNumber,
-      birthday: birthday,
-      country: country,
-      picFile: URL.createObjectURL(file[0]),
-      recieveNotif: sendNotif,
-      contestToData: contestToData,
-    });
+    dispatch(setShowPopup(true));
+    dispatch(
+      addUser({
+        firstName: firstName,
+        lastName: lastName,
+        email: emailAddress,
+        phoneNumber: phoneNumber,
+        birthday: birthday,
+        country: country,
+        picFile: URL.createObjectURL(file[0]),
+        recieveNotif: sendNotif,
+        contestToData: contestToData,
+      })
+    );
+    setTimeout(() => dispatch(setShowPopup(false)), 4000);
     reset();
     setFirstNameFocused(false);
     setLastNameFocused(false);

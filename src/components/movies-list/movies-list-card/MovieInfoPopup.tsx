@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './movieInfoPopup.scss';
-import IMDBService from '../../../services/IMDBService';
-import { MovieResponse } from '../../../models/movie';
 import { MovieAllInfo } from './MovieAllInfo';
 import { DotSpinner } from '../../dots-spinner/DotSpinner';
+import { useGetMovieQuery } from '../../../services/themoviedb';
 
 interface Props {
   showPopup: boolean;
@@ -12,20 +11,7 @@ interface Props {
 }
 
 export const MovieInfoPopup = (props: Props) => {
-  const [movie, setMovie] = useState<MovieResponse>();
-  const [moviesLoading, setMovieLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    onRequest(props.movieId);
-  }, [props.movieId]);
-
-  const onRequest = async (id: number) => {
-    const movieResponse = await IMDBService().getMovie(id);
-    setMovie(movieResponse);
-    if (movieResponse) {
-      setMovieLoading(false);
-    }
-  };
+  const { data, isLoading } = useGetMovieQuery(props.movieId);
 
   document.body.classList.add('scroll-disabled');
 
@@ -56,8 +42,8 @@ export const MovieInfoPopup = (props: Props) => {
             </span>
           </button>
           <div className="movie-info-popup">
-            {moviesLoading && <DotSpinner theme="light" size="big" />}
-            {!moviesLoading && <MovieAllInfo movie={movie!} />}
+            {isLoading && <DotSpinner theme="light" size="big" />}
+            {!isLoading && <MovieAllInfo movie={data!} />}
           </div>
         </div>
       </div>

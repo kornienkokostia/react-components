@@ -1,18 +1,12 @@
 import { Form } from '../../components/form/Form';
 import { UserCardList } from '../../components/user-card-list/UserCardList';
-import User from '../../models/user';
 import './formsPage.scss';
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../models/root-state';
 
 export const FormsPage = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [showPopup, setShowPopup] = useState(false);
-
-  const addUser = (user: User) => {
-    setShowPopup(true);
-    setUsers([...users, user]);
-    setTimeout(() => setShowPopup(false), 4000);
-  };
+  const { showPopup } = useSelector((state: RootState) => state.users);
 
   return (
     <>
@@ -21,8 +15,8 @@ export const FormsPage = () => {
         User created successfully
       </div>
       <div className="form-wrapper">
-        <Form addUser={addUser}></Form>
-        <UserCardList users={users} />
+        <Form />
+        <UserCardList />
       </div>
     </>
   );

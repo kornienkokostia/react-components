@@ -16,7 +16,6 @@ export const MoviesList = () => {
   useEffect(() => {
     dispatch(setMoviesLoading(isLoading));
     if (data && !searchMode) {
-      console.log('use');
       dispatch(updateMovies(data.results));
     }
   }, [dispatch, data, searchMode, isLoading]);

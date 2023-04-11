@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Movie } from '../../../models/movie';
-import IMDBService from '../../../services/IMDBService';
 import './moviesListCard.scss';
 
 import { MovieInfoPopup } from './MovieInfoPopup';
 import ReactDOM from 'react-dom';
+import { _imageBig } from '../../../services/themoviedb';
 
 interface PassedProps {
   movie: Movie;
@@ -20,7 +20,7 @@ export const MoviesListCard = (props: PassedProps) => {
         <img
           src={
             movie.poster_path !== null
-              ? `${IMDBService()._imageBig}/${movie.poster_path}`
+              ? `${_imageBig}/${movie.poster_path}`
               : `https://m.media-amazon.com/images/S/sash/i-t32yvKixg10fG.png`
           }
           className="movie-card-img"

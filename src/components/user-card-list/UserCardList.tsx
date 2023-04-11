@@ -1,18 +1,17 @@
 import React from 'react';
-import User from '../../models/user';
 import { UserCard } from '../user-card/UserCard';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../models/root-state';
 
-interface UserCardListProps {
-  users: User[];
-}
+export const UserCardList = () => {
+  const { users } = useSelector((state: RootState) => state.users);
 
-export const UserCardList = (props: UserCardListProps) => {
   return (
     <div className="form-user-cards-wrapper">
       <h1 className="form-title">Users list</h1>
       <div className="form-user-cards" role="list">
-        {props.users.length === 0 && <div>No users were added</div>}
-        {props.users.map((el, i) => (
+        {users.length === 0 && <div>No users were added</div>}
+        {users.map((el, i) => (
           <UserCard
             firstName={el.firstName}
             lastName={el.lastName}

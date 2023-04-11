@@ -1,7 +1,7 @@
 import React from 'react';
 import './movieAllInfo.scss';
 import { MovieResponse } from '../../../models/movie';
-import IMDBService from '../../../services/IMDBService';
+import { _imageBig } from '../../../services/themoviedb';
 
 interface Props {
   movie: MovieResponse;
@@ -24,7 +24,7 @@ export const MovieAllInfo = (props: Props) => {
         <img
           src={
             movie.poster_path !== null
-              ? `${IMDBService()._imageBig}/${movie.poster_path}`
+              ? `${_imageBig}/${movie.poster_path}`
               : `https://m.media-amazon.com/images/S/sash/i-t32yvKixg10fG.png`
           }
           alt="poster"
