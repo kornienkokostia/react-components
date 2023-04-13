@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './searchBar.scss';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,9 +9,8 @@ import { RootState } from '../../models/root-state';
 
 export const SearchBar = () => {
   const { search } = useSelector((state: RootState) => state.movies);
-
+  const [input, setInput] = useState<string>(search);
   const dispatch = useDispatch<AppDispatch>();
-
   const [trigger, { data, isFetching }] = useLazyGetSearchReasultsQuery();
 
   useEffect(() => {
@@ -19,12 +18,13 @@ export const SearchBar = () => {
     if (data && search.length) {
       dispatch(updateMovies(data.results));
     }
-  }, [data, dispatch, isFetching]);
+  }, [data, dispatch, isFetching, search]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      if (search.length) {
-        trigger(search);
+      if (input.length) {
+        dispatch(setSearch(input));
+        trigger(input);
         dispatch(setSearchMode(true));
       } else {
         dispatch(setSearchMode(false));
@@ -33,7 +33,7 @@ export const SearchBar = () => {
   };
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
-    dispatch(setSearch(e.currentTarget.value));
+    setInput(e.currentTarget.value);
   };
 
   return (
@@ -55,7 +55,7 @@ export const SearchBar = () => {
         type="text"
         className="search-bar-input"
         placeholder="Find in Movies"
-        value={search}
+        value={input}
         onInput={(e) => handleInput(e)}
         onKeyDown={(e) => handleKeyDown(e)}
         data-testid="input"
