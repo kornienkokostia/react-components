@@ -1,34 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './searchBar.scss';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store/store';
-import { setMoviesLoading, setSearch, setSearchMode, updateMovies } from '../../store/movieSlice';
-import { useLazyGetSearchReasultsQuery } from '../../services/themoviedb';
+import { setSearch } from '../../store/movieSlice';
 import { RootState } from '../../models/root-state';
 
 export const SearchBar = () => {
   const { search } = useSelector((state: RootState) => state.movies);
   const [input, setInput] = useState<string>(search);
   const dispatch = useDispatch<AppDispatch>();
-  const [trigger, { data, isFetching }] = useLazyGetSearchReasultsQuery();
-
-  useEffect(() => {
-    dispatch(setMoviesLoading(isFetching));
-    if (data && search.length) {
-      dispatch(updateMovies(data.results));
-    }
-  }, [data, dispatch, isFetching, search]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      if (input.length) {
-        dispatch(setSearch(input));
-        trigger(input);
-        dispatch(setSearchMode(true));
-      } else {
-        dispatch(setSearchMode(false));
-      }
+      dispatch(setSearch(input));
     }
   };
 

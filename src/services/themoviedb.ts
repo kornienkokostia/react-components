@@ -10,11 +10,11 @@ export const themoviedbApi = createApi({
   reducerPath: 'themoviedbApi',
   baseQuery: fetchBaseQuery({ baseUrl: _apiBase }),
   endpoints: (builder) => ({
-    getPopularMovies: builder.query<MoviesResponse, void>({
-      query: () => `/movie/popular?${_apiKey3}&${_apiLang}&page=1`,
-    }),
-    getSearchReasults: builder.query<MoviesResponse, string>({
-      query: (query) => `/search/movie?${_apiKey3}&${_apiLang}&query=${query}&page=1`,
+    getMovies: builder.query<MoviesResponse, string | undefined>({
+      query: (query) =>
+        query
+          ? `/search/movie?${_apiKey3}&${_apiLang}&query=${query}&page=1`
+          : `/movie/popular?${_apiKey3}&${_apiLang}&page=1`,
     }),
     getMovie: builder.query<MovieResponse, number>({
       query: (id) => `/movie/${id}?${_apiKey3}&${_apiLang}`,
@@ -22,5 +22,4 @@ export const themoviedbApi = createApi({
   }),
 });
 
-export const { useGetPopularMoviesQuery, useLazyGetSearchReasultsQuery, useGetMovieQuery } =
-  themoviedbApi;
+export const { useGetMoviesQuery, useGetMovieQuery } = themoviedbApi;
