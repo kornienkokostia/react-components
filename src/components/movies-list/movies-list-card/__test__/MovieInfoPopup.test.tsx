@@ -1,9 +1,9 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MovieInfoPopup } from '../MovieInfoPopup';
 
 jest.mock('../../../../services/themoviedb', () => ({
-  useGetMovieQuery: (movieId: number) => ({
+  useGetMovieQuery: () => ({
     data: {
       adult: false,
       backdrop_path: '/9BBTo63ANSmhC4e6r62OJFuK2GL.jpg',
