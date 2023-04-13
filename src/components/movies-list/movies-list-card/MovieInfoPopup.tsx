@@ -29,6 +29,7 @@ export const MovieInfoPopup = (props: Props) => {
             hide();
           }
         }}
+        data-testid="movie-info-popup-wrapper"
       >
         <div className="movie-info-popup-container">
           <button className="movie-info-popup-close-btn" onClick={hide}>

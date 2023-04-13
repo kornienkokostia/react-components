@@ -16,7 +16,7 @@ export const SearchBar = () => {
 
   useEffect(() => {
     dispatch(setMoviesLoading(isFetching));
-    if (data) {
+    if (data && search.length) {
       dispatch(updateMovies(data.results));
     }
   }, [data, dispatch, isFetching]);
@@ -24,7 +24,7 @@ export const SearchBar = () => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       if (search.length) {
-        trigger(search, false);
+        trigger(search);
         dispatch(setSearchMode(true));
       } else {
         dispatch(setSearchMode(false));

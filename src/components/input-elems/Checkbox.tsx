@@ -30,7 +30,11 @@ export const Checkbox = (props: PassedProps) => {
           onChange={() => props.setChecked((prev) => !prev)}
           data-testid={props.testId}
         />
-        <div className="checkbox-text" onClick={() => props.setChecked((prev) => !prev)}>
+        <div
+          className="checkbox-text"
+          data-testid="checkbox-text"
+          onClick={() => props.setChecked((prev) => !prev)}
+        >
           {props.fieldTitle}
         </div>
       </div>

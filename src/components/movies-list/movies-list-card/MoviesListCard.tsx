@@ -16,7 +16,11 @@ export const MoviesListCard = (props: PassedProps) => {
   const movie = props.movie;
   return (
     <>
-      <div className={`movie-card ${showPopup ? 'active' : ''}`} onClick={() => setShowPopup(true)}>
+      <div
+        className={`movie-card ${showPopup ? 'active' : ''}`}
+        data-testid="movie-card"
+        onClick={() => setShowPopup(true)}
+      >
         <img
           src={
             movie.poster_path !== null

@@ -11,14 +11,18 @@ import { RootState } from '../../models/root-state';
 export const MoviesList = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { movies, searchMode, moviesLoading } = useSelector((state: RootState) => state.movies);
-  const { data, isLoading } = useGetPopularMoviesQuery();
+  const { data } = useGetPopularMoviesQuery();
 
   useEffect(() => {
-    dispatch(setMoviesLoading(isLoading));
+    if (!searchMode) {
+      dispatch(setMoviesLoading(true));
+    }
+
     if (data && !searchMode) {
+      dispatch(setMoviesLoading(false));
       dispatch(updateMovies(data.results));
     }
-  }, [dispatch, data, searchMode, isLoading]);
+  }, [dispatch, data, searchMode]);
 
   return (
     <>

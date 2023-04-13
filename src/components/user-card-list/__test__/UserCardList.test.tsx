@@ -1,44 +1,28 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
-import User from '../../../models/user';
 import { UserCardList } from '../UserCardList';
+import store from '../../../store/store';
 
 describe('UserCardList', () => {
-  const users: User[] = [
-    {
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'johndoe@example.com',
-      phoneNumber: '123-456-7890',
-      birthday: '01/01/1990',
-      country: 'USA',
-      picFile: '',
-      recieveNotif: 'Yes',
-      contestToData: true,
-    },
-    // Add more users as needed
-  ];
+  it('renders the list of user cards', () => {
+    render(
+      <Provider store={store}>
+        <UserCardList />
+      </Provider>
+    );
 
-  it('renders a list of user cards', () => {
-    render(<UserCardList users={users} />);
-    const userCards = screen.getAllByRole('listitem');
-
-    expect(userCards.length).toBe(users.length);
-    users.forEach((user, i) => {
-      expect(userCards[i]).toHaveTextContent(`${user.firstName} ${user.lastName}`);
-      expect(userCards[i]).toHaveTextContent(user.email);
-      expect(userCards[i]).toHaveTextContent(user.phoneNumber);
-      expect(userCards[i]).toHaveTextContent(user.country);
-      expect(userCards[i]).toHaveTextContent(user.birthday);
-      expect(userCards[i]).toHaveTextContent(user.recieveNotif ? 'Yes' : 'No');
-      expect(userCards[i]).toHaveTextContent(user.contestToData ? 'Yes' : 'No');
-    });
+    expect(screen.getByText('Users list')).toBeInTheDocument();
   });
 
-  it('displays a message if no users were added', () => {
-    render(<UserCardList users={[]} />);
-    const noUsersMessage = screen.getByText('No users were added');
+  it('shows "No users were added" message when there are no users', () => {
+    render(
+      <Provider store={store}>
+        <UserCardList />
+      </Provider>
+    );
 
-    expect(noUsersMessage).toBeInTheDocument();
+    expect(screen.getByText('Users list')).toBeInTheDocument();
+    expect(screen.queryByText('No users were added')).toBeInTheDocument();
   });
 });

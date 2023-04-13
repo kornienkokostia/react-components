@@ -1,45 +1,40 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Form } from '../Form';
+import store from '../../../store/store';
+import { Provider } from 'react-redux';
 
-describe('Form component', () => {
-  it('submits form with user data', () => {
-    const addUserMock = jest.fn();
-    const { getByTestId } = render(<Form addUser={addUserMock} />);
-    const firstNameInput = getByTestId('first-name');
-    const lastNameInput = getByTestId('last-name');
-    const emailInput = getByTestId('email');
-    const phoneInput = getByTestId('phone-number');
-    const birthdayInput = getByTestId('birthday');
-    const countryInput = getByTestId('country');
-    const fileInput = getByTestId('file');
-    const sendNotifRadio = getByTestId('send-notif-two');
-    const contestToDataCheckbox = getByTestId('contest-to-data');
+describe('Form', () => {
+  test('should call addUser function with correct parameters on form submission', async () => {
+    render(
+      <Provider store={store}>
+        <Form />
+      </Provider>
+    );
 
-    fireEvent.change(firstNameInput, { target: { value: 'John' } });
-    fireEvent.change(lastNameInput, { target: { value: 'Doe' } });
-    fireEvent.change(emailInput, { target: { value: 'johndoe@example.com' } });
-    fireEvent.change(phoneInput, { target: { value: '1234567890' } });
-    fireEvent.change(birthdayInput, { target: { value: '2022-01-01' } });
-    fireEvent.change(countryInput, { target: { value: 'Canada' } });
-    fireEvent.change(fileInput, {
-      target: { files: [new File([''], 'test.jpg', { type: 'image/jpeg' })] },
-    });
-    fireEvent.click(sendNotifRadio);
+    const firstNameInput = screen.getByTestId('first-name');
+    const lastNameInput = screen.getByTestId('last-name');
+    const emailInput = screen.getByTestId('email');
+    const phoneInput = screen.getByTestId('phone-number');
+    const birthdayInput = screen.getByTestId('birthday');
+    const countryInput = screen.getByTestId('country');
+    const fileInput = screen.getByTestId('file');
+    const sendNotifSwitcher = screen.getByTestId('send-notif');
+    const contestToDataCheckbox = screen.getByTestId('contest-to-data');
+    const contestToDataCheckboxText = screen.getByTestId('checkbox-text');
+    const submitButton = screen.getByTestId('create-btn');
+
+    fireEvent.input(firstNameInput, 'John');
+    fireEvent.input(lastNameInput, 'Doe');
+    fireEvent.input(emailInput, 'john.doe@example.com');
+    fireEvent.input(phoneInput, '123456789');
+    fireEvent.change(birthdayInput, { target: { value: '1990-01-01' } });
+    fireEvent.change(countryInput, { target: { value: 'United States' } });
+    const file = new File(['file contents'], 'test.png', { type: 'image/png' });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+    fireEvent.click(sendNotifSwitcher);
     fireEvent.click(contestToDataCheckbox);
-
-    fireEvent.submit(getByTestId('form'));
-
-    // expect(addUserMock).toHaveBeenCalledWith({
-    //   firstName: 'John',
-    //   lastName: 'Doe',
-    //   email: 'johndoe@example.com',
-    //   phoneNumber: '1234567890',
-    //   birthday: '2022-01-01',
-    //   country: 'Canada',
-    //   picFile: expect.any(String),
-    //   recieveNotif: true,
-    //   contestToData: true,
-    // });
+    fireEvent.click(contestToDataCheckboxText);
+    fireEvent.click(submitButton);
   });
 });

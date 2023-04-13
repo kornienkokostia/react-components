@@ -11,7 +11,7 @@ export const UserCard = (props: User) => {
   };
 
   return (
-    <div className="form-card" role="listitem">
+    <div className="form-card" data-testid="listitem">
       <div className="form-card-header">
         {props.picFile && (
           <img src={props.picFile} alt="profile-pic" className="form-card-img"></img>
