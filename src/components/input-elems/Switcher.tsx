@@ -42,7 +42,9 @@ export const Switcher = (props: PassedProps) => {
           data-testid={props.testIdTwo}
         />
 
-        <p className="switcher-title">{props.fieldTitle}</p>
+        <p className="switcher-title" data-testid="send-notif">
+          {props.fieldTitle}
+        </p>
       </div>
     </div>
   );
