@@ -6,7 +6,6 @@ import { Switcher } from '../input-elems/Switcher';
 import { Checkbox } from '../input-elems/Checkbox';
 import { FileSelect } from '../input-elems/FileSelect';
 import countries from '../../db/countriesDB';
-import './form.scss';
 import { useForm } from 'react-hook-form';
 import { FormData } from '../../models/form';
 import { useDispatch } from 'react-redux';

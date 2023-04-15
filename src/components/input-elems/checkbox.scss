@@ -4,6 +4,7 @@
   column-gap: 10px;
   margin-top: 14px;
   margin-bottom: 14px;
+  position: relative;
   &-input {
     appearance: none;
     width: 15.33px;
@@ -14,12 +15,17 @@
     &:checked {
       border-color: #0071e3;
       background-color: #0071e3;
-      background-image: url(../../assets/checkbox-checked.svg);
-      background-position: 2px 3.5px;
-      background-size: 9px;
-      background-repeat: no-repeat;
+    }
+    &-checked {
+      position: absolute;
+      pointer-events: none;
+      left: 2px;
+      &-img {
+        width: 11px;
+      }
     }
   }
+
   &-text {
     user-select: none;
   }

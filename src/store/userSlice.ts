@@ -7,7 +7,7 @@ interface UserSlice {
 }
 
 const userSlice = createSlice({
-  name: 'movies',
+  name: 'users',
   initialState: {
     users: [],
     showPopup: false,

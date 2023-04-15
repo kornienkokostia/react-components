@@ -1,6 +1,5 @@
 import React from 'react';
 import User from '../../models/user';
-import './userCard.scss';
 
 export const UserCard = (props: User) => {
   const convertDate = (str: string) => {

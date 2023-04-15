@@ -1,6 +1,5 @@
 import React from 'react';
 import { FieldValues, UseFormRegister, FieldErrors } from 'react-hook-form/dist/types';
-import './input.scss';
 import { FormFieldErrors } from '../../models/form';
 
 interface PassedProps {

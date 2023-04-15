@@ -1,5 +1,4 @@
 import React from 'react';
-import './moviesList.scss';
 import { MoviesListCard } from './movies-list-card/MoviesListCard';
 import { DotSpinner } from '../dots-spinner/DotSpinner';
 import { useGetMoviesQuery } from '../../services/themoviedb';

@@ -1,5 +1,4 @@
 import React from 'react';
-import './movieInfoPopup.scss';
 import { MovieAllInfo } from './MovieAllInfo';
 import { DotSpinner } from '../../dots-spinner/DotSpinner';
 import { useGetMovieQuery } from '../../../services/themoviedb';

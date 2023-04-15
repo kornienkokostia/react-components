@@ -1,5 +1,4 @@
 import React from 'react';
-import './switcher.scss';
 import { FieldValues, UseFormRegister } from 'react-hook-form/dist/types';
 
 interface PassedProps {

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Movie } from '../../../models/movie';
-import './moviesListCard.scss';
-
 import { MovieInfoPopup } from './MovieInfoPopup';
 import ReactDOM from 'react-dom';
 import { _imageBig } from '../../../services/themoviedb';

@@ -1,5 +1,3 @@
-import '../dots-spinner/dotsSpinner.scss';
-
 interface IDotsSpinnerParams {
   theme: 'dark' | 'light';
   size: 'big' | 'small';

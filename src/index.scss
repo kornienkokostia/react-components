@@ -1,4 +1,10 @@
 @import url('https://fonts.cdnfonts.com/css/sf-ui-text-2');
+@import './components/dots-spinner/dotsSpinner.scss';
+@import './components/header/header.scss';
+@import './pages/about-page/aboutPage.scss';
+@import './pages/error-page/errorPage.scss';
+@import './pages/forms-page/formsPage.scss';
+@import './pages/main-page/mainPage.scss';
 
 body {
   font-family: 'SF UI Text', sans-serif;

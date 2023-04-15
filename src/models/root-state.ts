@@ -8,4 +8,7 @@ export interface RootState {
     users: User[];
     showPopup: boolean;
   };
+  page: {
+    page: string;
+  };
 }

@@ -1,13 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import movieReducer from './movieSlice';
 import { themoviedbApi } from '../services/themoviedb';
-import usersReducer from './userSlice';
+import userReducer from './userSlice';
+import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 
-const store = configureStore({
+const store: ToolkitStore = configureStore({
   reducer: {
     movies: movieReducer,
     [themoviedbApi.reducerPath]: themoviedbApi.reducer,
-    users: usersReducer,
+    users: userReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(themoviedbApi.middleware),
 });

@@ -6,15 +6,5 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve"
   },
-  "include": [
-    "vite.config.ts",
-    "src/entry-server.tsx",
-    "src/vite-env.d.ts",
-    "src/App.tsx",
-    "src/pages/main-page/MainPage.tsx",
-    "src/pages/about-page/AboutPage.tsx",
-    "src/pages/error-page/ErrorPage.tsx",
-    "src/components/header/Header.tsx",
-    "src/pages/forms-page/FormsPage.tsx"
-  ]
+  "include": ["vite.config.ts", "src/entry-server.tsx", "src/vite-env.d.ts", "src/**/*"]
 }

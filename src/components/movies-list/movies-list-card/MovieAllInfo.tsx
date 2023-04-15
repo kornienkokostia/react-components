@@ -1,5 +1,4 @@
 import React from 'react';
-import './movieAllInfo.scss';
 import { MovieResponse } from '../../../models/movie';
 import { _imageBig } from '../../../services/themoviedb';
 

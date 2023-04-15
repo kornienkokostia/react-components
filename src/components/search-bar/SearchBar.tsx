@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './searchBar.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store/store';
 import { setSearch } from '../../store/movieSlice';

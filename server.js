@@ -36,6 +36,7 @@ if (!isProduction) {
 
 // Serve HTML
 app.use('*', async (req, res) => {
+
   try {
     const url = req.originalUrl.replace(base, '')
 
@@ -48,14 +49,14 @@ app.use('*', async (req, res) => {
       render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render
     } else {
       template = templateHtml
-      render = (await import('./dist/server/entry-server.js')).render
+      render = (await import('./dist/server/entry-server.tsx')).render
     }
 
-    const rendered = await render(url, ssrManifest)
+    const rendered = await render(req)
 
     const html = template
-      .replace(`<!--app-head-->`, rendered.head ?? '')
-      .replace(`<!--app-html-->`, rendered.html ?? '')
+      .replace(`<!--app-html-->`, rendered ?? '')
+
 
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
   } catch (e) {

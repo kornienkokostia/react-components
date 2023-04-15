@@ -1,3 +1,9 @@
+@import './../../components/search-bar/searchBar.scss';
+@import './../../components/movies-list/moviesList.scss';
+@import './../../components/movies-list/movies-list-card/movieAllInfo.scss';
+@import './../../components/movies-list/movies-list-card/movieInfoPopup.scss';
+@import './../../components/movies-list/movies-list-card/moviesListCard.scss';
+
 .main-page {
   display: flex;
   flex-direction: column;
