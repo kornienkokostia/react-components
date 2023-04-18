@@ -5,14 +5,11 @@ import { Header } from '../../components/header/Header';
 
 export const MainPage = () => {
   return (
-    <>
-      <Header page="Home" />
-      <div className="main-page-container">
-        <div className="main-page">
-          <SearchBar />
-          <MoviesList />
-        </div>
+    <div className="main-page-container">
+      <div className="main-page">
+        <SearchBar />
+        <MoviesList />
       </div>
-    </>
+    </div>
   );
 };

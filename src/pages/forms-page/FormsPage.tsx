@@ -10,7 +10,6 @@ export const FormsPage = () => {
 
   return (
     <>
-      <Header page="Forms" />
       <div className="top-white-bg"></div>
       <div className={`user-added-popup ${showPopup ? 'active' : ''}`}>
         User created successfully

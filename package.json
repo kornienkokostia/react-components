@@ -4,11 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node server",
-    "build": "npm run build:client && npm run build:server",
-    "build:client": "vite build --ssrManifest --outDir dist/client",
-    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
-    "preview": "cross-env NODE_ENV=production node server",
+    "dev": "ts-node server.ts",
     "lint": "eslint . --ext .ts,.tsx",
     "lint-fix": "eslint . --fix",
     "format": "prettier .  --write",
@@ -42,7 +38,8 @@
     "react-router-dom": "^6.9.0",
     "redux-mock-store": "^1.5.4",
     "sass": "^1.59.3",
-    "sirv": "^2.0.2"
+    "sirv": "^2.0.2",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.21.4",

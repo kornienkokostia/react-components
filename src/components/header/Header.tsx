@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 interface HeaderLinkProps {
@@ -6,29 +6,25 @@ interface HeaderLinkProps {
   path: string;
 }
 
-interface Props {
-  page: string;
-}
+export const Header = () => {
+  const [currentPage, setCurrentPage] = useState('Home');
 
-export const Header = (props: Props) => {
-  const [currentPage, setCurrentPage] = useState(props.page);
-
-  // useEffect(() => {
-  //   switch (window.location.pathname) {
-  //     case '/':
-  //       setCurrentPage('Home');
-  //       break;
-  //     case '/about':
-  //       setCurrentPage('About');
-  //       break;
-  //     case '/forms':
-  //       setCurrentPage('Forms');
-  //       break;
-  //     default:
-  //       setCurrentPage('Error');
-  //       break;
-  //   }
-  // }, []);
+  useEffect(() => {
+    switch (window.location.pathname) {
+      case '/':
+        setCurrentPage('Home');
+        break;
+      case '/about':
+        setCurrentPage('About');
+        break;
+      case '/forms':
+        setCurrentPage('Forms');
+        break;
+      default:
+        setCurrentPage('Error');
+        break;
+    }
+  }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     const link = e.target as HTMLElement;
