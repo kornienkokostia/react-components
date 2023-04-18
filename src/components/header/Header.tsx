@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 interface HeaderLinkProps {
   page: string;
@@ -9,8 +10,10 @@ interface HeaderLinkProps {
 export const Header = () => {
   const [currentPage, setCurrentPage] = useState('Home');
 
+  const location = useLocation();
+
   useEffect(() => {
-    switch (window.location.pathname) {
+    switch (location.pathname) {
       case '/':
         setCurrentPage('Home');
         break;
@@ -24,7 +27,7 @@ export const Header = () => {
         setCurrentPage('Error');
         break;
     }
-  }, []);
+  }, [location]);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     const link = e.target as HTMLElement;
