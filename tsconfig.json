@@ -21,7 +21,8 @@
     "jsx": "react-jsx",
     "noImplicitAny": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "types": ["cypress", "node"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
