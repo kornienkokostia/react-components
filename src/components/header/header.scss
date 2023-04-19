@@ -28,6 +28,7 @@
       background: black;
       border-radius: 1px;
       margin-left: 50%;
+      transition: 0.3s;
     }
     &.active::after {
       width: 100%;
