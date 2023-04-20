@@ -7,5 +7,6 @@ export default defineConfig({
       coverage(on, config);
       return config;
     },
+    baseUrl: 'http://localhost:5173',
   },
 });
