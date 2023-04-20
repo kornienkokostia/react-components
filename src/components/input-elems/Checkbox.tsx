@@ -26,7 +26,7 @@ export const Checkbox = (props: PassedProps) => {
           {...props.register(props.name, {
             required: props.requestedErrorMsg,
           })}
-          onChange={() => props.setChecked((prev) => !prev)}
+          onClick={() => props.setChecked((prev) => !prev)}
           data-testid={props.testId}
         />
         {props.checked && (
