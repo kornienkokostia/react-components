@@ -9,7 +9,7 @@
     "lint-fix": "eslint . --fix",
     "format": "prettier .  --write",
     "test:e2e": "cross-env NODE_ENV=test cypress open",
-    "test2": "npx cypress run --e2e && npx nyc report && npx nyc report --reporter=text-summary"
+    "test": "npx cypress run --e2e && npx nyc report && npx nyc report --reporter=text-summary"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.21.0",
